@@ -1,8 +1,9 @@
 #include <vector>
-
-class abstract_file {
+#ifndef ABSTRACT_FILE_H
+#define ABSTRACT_FILE_H
+class AbstractFile {
     public:
-    virtual ~abstract_file() = default;
+    virtual ~AbstractFile() = default;
 
     // Pure virtual functions
     virtual void read() = 0;
@@ -10,4 +11,7 @@ class abstract_file {
     virtual int append(std::vector<char>& data) = 0;
     virtual unsigned int getSize() const = 0;
     virtual std::string getName() const = 0;
+
 };
+
+#endif

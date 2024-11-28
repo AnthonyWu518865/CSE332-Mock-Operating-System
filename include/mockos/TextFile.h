@@ -5,7 +5,7 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
-class TextFile : public abstract_file{
+class TextFile : public AbstractFile{
 private:
     std::vector<char> content;
     std::string name;
