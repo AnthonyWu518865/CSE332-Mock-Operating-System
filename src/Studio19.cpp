@@ -21,7 +21,7 @@ int main() {
     //
     // BasicDisplayVisitor display;
     // file->accept(&display);
-    MetadataFileVisitor display;
+    MetadataDisplayVisitor display;
     file->accept(&display);
 
     // display.visit_TextFile(&textFile);
