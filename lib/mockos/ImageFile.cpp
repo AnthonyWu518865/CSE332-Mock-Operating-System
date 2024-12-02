@@ -26,6 +26,7 @@ int ImageFile::write(const vector<char>& data) {
     if (data.empty()) {
         size = 0;
         contents.clear();
+        cout<< "Error: empty contents" << endl;
         return -1;
     }
     size = data[data.size()-1] - '0';
@@ -33,6 +34,7 @@ int ImageFile::write(const vector<char>& data) {
     if (size < 1 || size * size != (data.size() - 1)) {
         contents.clear();
         size = 0;
+        cout<< "Error: wrong size" << endl;
         return -2;
     }
 
@@ -40,6 +42,7 @@ int ImageFile::write(const vector<char>& data) {
         if (data[i] != 'X' && data[i] != ' ') {
             contents.clear();
             size = 0;
+            cout<< "Error: wrong contents" << endl;
             return -3;
         }
     }
