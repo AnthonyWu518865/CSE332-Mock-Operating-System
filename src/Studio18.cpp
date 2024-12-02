@@ -49,6 +49,9 @@ int main() {
                 cout << "There is an error in the size of the image." << endl;
                 //Are there any other errors you can think of?
                 }
+            else if (writeSuccess == -11) {
+                cout << "Invalid character." << endl;
+            }
             else {
                 cout << "Failed to create and write image file. Could be a result of the input." << endl;
             }
