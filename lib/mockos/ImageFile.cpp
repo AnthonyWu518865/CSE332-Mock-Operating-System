@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "mockos/ImageFile.h"
+#include "mockos/AbstractFileVisitor.h"
 
 using namespace std;
 
@@ -11,6 +12,11 @@ ImageFile::ImageFile(const std::string& fileName)
 unsigned int ImageFile::getSize() const {
     return contents.size();
 }
+
+unsigned int ImageFile::getDimensions() {
+    return size;
+}
+
 
 string ImageFile::getName() const {
     return this->filename;
@@ -49,28 +55,21 @@ int ImageFile::write(const vector<char>& data) {
 }
 
 int ImageFile :: append(vector<char> & extra) {
-    return -1;
+    return -4;
 }
 
-// int ImageFile::coordinatetoIndex(int x, int y) {
-//     if(x < 0 || y < 0 || x > (size - '0') || y > (size - '0')) {
-//         return -4;
-//     }
-//     return y * size + x;
-// }
 
-void ImageFile::read() {
-    // for (auto c : contents) {
-    //     std::cout << c << '\n';
+vector<char> ImageFile::read() {
+
+    // for(int height = 0; height < size; height++) {
+    //     for(int width = 0; width < size; width++) {
+    //         int currIndex = width * size + height;
+    //         cout << contents[currIndex] << " ";
+    //     }
+    //     cout << endl;
     // }
-
-    for(int height = 0; height < size; height++) {
-        for(int width = 0; width < size; width++) {
-            int currIndex = width * size + height;
-            cout << contents[currIndex] << " ";
-        }
-        cout << endl;
-    }
+    return contents;
 }
-
-
+void ImageFile::accept(AbstractFileVisitor* abstract_file_visitor) {
+    abstract_file_visitor->visit_ImageFile(this);
+}

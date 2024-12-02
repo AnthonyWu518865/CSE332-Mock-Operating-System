@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "mockos/TextFile.h"
-
+#include "mockos/AbstractFileVisitor.h"
 
 TextFile:: TextFile(const std::string &fileName) : name(fileName) {}
 
@@ -22,9 +22,14 @@ int TextFile :: append(vector<char> & extra) {
     }
     return 0;
 }
-void TextFile::read() {
-    for (const char& c : content) {
-        std::cout << c;
-    }
-    std::cout << std::endl;
+vector<char> TextFile::read() {
+    // for (const char& c : content) {
+    //     std::cout << c;
+    // }
+    // std::cout << std::endl;
+    return content;
+}
+
+void TextFile::accept(AbstractFileVisitor* abstract_file_visitor) {
+    abstract_file_visitor->visit_TextFile(this);
 }

@@ -1,5 +1,4 @@
 # pragma once
-using namespace std;
 #ifndef IMAGEFILE_H
 #define IMAGEFILE_h
 #include <vector>
@@ -12,18 +11,17 @@ private:
     std::vector <char> contents ;
     char size;
 
-    int coordinatetoIndex (int x, int y);
 public:
     ImageFile(const std::string& filename);
 
     //unsigned int getSize(const vector<char> &data) const;
-
     unsigned int getSize() const override;
+    unsigned int getDimensions();
     std::string getName() const override;
-    int write(const vector<char> & data) override;
-    int append(vector<char> & extra) override;
-    void read() override;
-
+    int write(const std::vector<char> & data) override;
+    int append(std::vector<char> & extra) override;
+    std::vector<char> read() override;
+    void accept(AbstractFileVisitor* abstract_file_visitor) override;
 };
 
 #endif
