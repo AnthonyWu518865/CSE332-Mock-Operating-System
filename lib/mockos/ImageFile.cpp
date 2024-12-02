@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "../include/mockos/ImageFile.h"
+#include "mockos/ImageFile.h"
 
 using namespace std;
 

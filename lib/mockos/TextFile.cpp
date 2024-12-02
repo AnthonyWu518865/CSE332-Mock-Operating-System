@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "../include/mockos/TextFile.h"
+#include "mockos/TextFile.h"
 
 
 TextFile:: TextFile(const std::string &fileName) : name(fileName) {}

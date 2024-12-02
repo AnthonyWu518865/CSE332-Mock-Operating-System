@@ -1,6 +1,6 @@
-#include "../include/mockos/SimpleFileSystem.h"
-#include "../include/mockos/ImageFile.h"
-#include "../include/mockos/TextFile.h"
+#include "mockos/SimpleFileSystem.h"
+#include "mockos/ImageFile.h"
+#include "mockos/TextFile.h"
 
 
 SimpleFileSystem::~SimpleFileSystem() {

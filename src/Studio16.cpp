@@ -1,4 +1,4 @@
-#include "../include/mockos/TextFile.h"
+#include "mockos/TextFile.h"
 #include <iostream>
 #include <string>
 
