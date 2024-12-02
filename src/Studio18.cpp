@@ -25,7 +25,7 @@ int main() {
                 textFile1 -> read();
             }
             else {
-                cout << "Failed to create and write text file." << endl;
+                cout<< "Failed to create and write text file." << endl;
             }
         }
     }
