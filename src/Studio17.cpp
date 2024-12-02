@@ -4,12 +4,12 @@
 
 
 int main() {
-    // std::vector<char> validData = {'X', ' ', 'X', ' ', '2'};
-    // ImageFile imageFile("test.img");
-    //  std::cout<<imageFile.getName() << endl;
-    // imageFile.write(validData);
-    // imageFile.read();
-    // std::cout<<imageFile.getSize()<< endl;
+    std::vector<char> validData = {'X', ' ', 'X', ' ', '2'};
+    ImageFile imageFile("test.img");
+    std::cout<<imageFile.getName() << endl;
+    imageFile.write(validData);
+    imageFile.read();
+    std::cout<<imageFile.getSize()<< endl;
 
     SimpleFileSystem fs;
 

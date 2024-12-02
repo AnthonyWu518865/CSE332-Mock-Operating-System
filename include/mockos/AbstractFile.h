@@ -11,7 +11,6 @@ class AbstractFile {
     virtual int append(std::vector<char>& data) = 0;
     virtual unsigned int getSize() const = 0;
     virtual std::string getName() const = 0;
-
 };
 
 #endif

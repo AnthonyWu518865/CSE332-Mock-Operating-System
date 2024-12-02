@@ -5,7 +5,7 @@
 
 using namespace std;
 int main () {
-    abstract_file* input = new TextFile("example.txt");
+    AbstractFile* input = new TextFile("example.txt");
     //TextFile input("input.txt");
     vector<char> newText;
     newText.push_back('a');
