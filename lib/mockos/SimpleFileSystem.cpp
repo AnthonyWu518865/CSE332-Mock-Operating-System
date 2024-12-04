@@ -64,7 +64,6 @@ int SimpleFileSystem::closeFile(AbstractFile* file) {
     return 0;
 }
 
-
 int SimpleFileSystem::deleteFile(const std::string& filename) {
     auto it  = files.find(filename);
     if (it == files.end()) {
