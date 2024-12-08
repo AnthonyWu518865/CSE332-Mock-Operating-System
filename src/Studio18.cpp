@@ -37,7 +37,7 @@ int main() {
             delete imageFile1;
         }
         else {
-            vector <char> imageIn = {'X', 'X', 'X', 'X', ' ', 'O', 'O', 'O', 'O'};
+            vector <char> imageIn = {'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3'};
             int writeSuccess = imageFile1 -> write(imageIn);
             if (writeSuccess == 0) {
                 cout << "Image has been added and written successfully: " << endl;
