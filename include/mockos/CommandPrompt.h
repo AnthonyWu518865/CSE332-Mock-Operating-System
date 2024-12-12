@@ -5,14 +5,14 @@
 #include "mockos/AbstractFileSystem.h"
 
 class CommandPrompt {
+protected:
     std::map <std::string, AbstractCommand*> promptMap;
     AbstractFileSystem *fileSystem;
     AbstractFileFactory *fileFactory;
-protected:
     void listCommands();
     std::string prompt();
-    public:
-    CommandPrompt(AbstractFileSystem *fileSystem, AbstractFileFactory *fileFactory);
+public:
+    CommandPrompt() = default;
     ~CommandPrompt() = default;
     void setFileSystem(AbstractFileSystem* filePtr);
     void setFileFactory(AbstractFileFactory* fileFactoryPtr);

@@ -1,7 +1,6 @@
 #include "mockos/CommandPrompt.h"
 #include "mockos/AbstractCommand.h"
 #include <sstream>
-CommandPrompt::CommandPrompt(AbstractFileSystem *fileSystem, AbstractFileFactory *fileFactory): fileSystem(nullptr), fileFactory(nullptr){};
 
 void CommandPrompt::setFileSystem(AbstractFileSystem * filePtr) {
     AbstractFileSystem *fileSystem = filePtr;
@@ -41,41 +40,48 @@ int CommandPrompt::run() {
         }else {
             std::string space = " ";
             int num  = command.find(space);
-            if(num == std::string::npos ) {
+            if(num == std::string::npos) {
                 promptMap.find(command);
                 if(promptMap.find(command) != promptMap.end()) {
                     std::string empty = "";
                     if(promptMap[command]->execute(empty) != 0) {
-                        std::cout << "Command failed."  << std::endl;
+                        std::cout << "Command failed. 1"  << std::endl;
+                        return 20;
                     }
                 }else {
-                    std::cout << "Command not found." << std::endl;
+                    std::cout << "Command not found.1 " << std::endl;
+                    return 21;
                 }
             }else {
                 std::istringstream iss(command);
-                std::string first, rest;
-                iss>>first;
+                std::string first, second, rest;
+                iss>>first>> second>>rest;
                 std::getline (iss, rest);
                 if(first == "help") {
-                    std::string second;
-                    iss>>second;
+                    // std::string second;
+                    // iss>>first>>second;
                     if(promptMap.find(second) != promptMap.end()) {
                         promptMap[second]->displayInfo();
                     }else {
-                        std::cout << "Command not found." << std::endl;
+                        std::cout << rest << "Command not found. 2" << std::endl;
+                        return 22;
                     }
                 }else {
                     if(promptMap.find(first) != promptMap.end()) {
                         if (promptMap[command]->execute(rest) != 0) {
-                            std::cout << "Command failed."  << std::endl;
+                            std::cout << "Command failed 2."  << std::endl;
+                            return 23;
                         }
+                        return 0;
                     }else {
                         std::cout << "Command not found." << std::endl;
+                        return 24;
                     }
                 }
             }
         }
     }
+
 }
 
 
