@@ -23,7 +23,7 @@ int SimpleFileSystem::createFile(const std::string& filename) {
         cout << "File " << filename << " already exists." << endl;
         return -1;
     }
-    size_t dotPos = filename.find_last_of('.');
+    int dotPos = filename.find_last_of('.');
     if (dotPos == std::string::npos) {
         cout << "File " << filename << " does not exist." << endl;
         return -2;
@@ -79,4 +79,12 @@ int SimpleFileSystem::deleteFile(const std::string& filename) {
     delete it->second;
     files.erase(it);
     return 0;
+}
+
+std::set<string> SimpleFileSystem::getFileNames() {
+    std::set<string> fileNames;
+    for (auto& file : files) {
+        fileNames.insert(file.first);
+    }
+    return fileNames;
 }
