@@ -12,11 +12,13 @@ int TouchCommand::execute(std::string s) {
     if(file == nullptr) {
         return 11;
     }
+    std:: cout << "File created successfully" << std:: endl;
     int result = system->addFile(s, file);
     if(result != 0) {
+        delete file;
         return 13;
     }
+    std:: cout << "File added successfully" << std::endl;
     return 0;
 }
-
 

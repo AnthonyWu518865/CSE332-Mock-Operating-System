@@ -11,5 +11,9 @@ int main() {
     commandPrompt.setFileSystem(simpleSystem);
     commandPrompt.setFileFactory(simpleFactory);
     commandPrompt.addCommand("touch", command);
-   return commandPrompt.run();
+    commandPrompt.run();
+    if (simpleSystem ->openFile("file.txt") != nullptr) {
+        cout << "access" << endl;
+    }
+   return 0;
 }
