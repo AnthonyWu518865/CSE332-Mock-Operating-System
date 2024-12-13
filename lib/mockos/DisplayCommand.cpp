@@ -4,11 +4,12 @@
 #include "mockos/BasicDisplayVisitor.h"
 #include "mockos/PasswordProxy.h"
 
-DisplayCommand::DisplayCommand(AbstractFileSystem *s, AbstractFileFactory *f): system(s), factory(f){}
+DisplayCommand::DisplayCommand(AbstractFileSystem *s): system(s){}
 
 void DisplayCommand::displayInfo() {
     std::cout << "" << std::endl;
 }
+
 // how do we make sure that it succeeds
 int DisplayCommand::execute(std::string s) {
     std::string space = " ";

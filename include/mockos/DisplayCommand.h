@@ -4,10 +4,9 @@
 #include "mockos/AbstractFileSystem.h"
 
 class DisplayCommand: public AbstractCommand {
-    AbstractFileFactory* factory;
     AbstractFileSystem* system;
 public:
-    DisplayCommand(AbstractFileSystem* s,AbstractFileFactory* f);
+    DisplayCommand(AbstractFileSystem* s);
     ~DisplayCommand() override = default;
     void displayInfo() override;
     int execute(std::string) override;

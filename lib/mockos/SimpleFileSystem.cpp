@@ -75,7 +75,6 @@ int SimpleFileSystem::deleteFile(const std::string& filename) {
         cout << "File " << filename << " is open." << endl;
         return -2;
     }
-
     delete it->second;
     files.erase(it);
     return 0;

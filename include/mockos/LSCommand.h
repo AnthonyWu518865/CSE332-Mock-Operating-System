@@ -4,10 +4,9 @@
 #include "mockos/AbstractFileSystem.h"
 
 class LSCommand: public AbstractCommand {
-    AbstractFileFactory* factory;
     AbstractFileSystem* system;
 public:
-    LSCommand(AbstractFileSystem* s,AbstractFileFactory* f);
+    LSCommand(AbstractFileSystem* s);
     ~LSCommand() override = default;
     void displayInfo() override;
     int execute(std::string)override;

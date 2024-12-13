@@ -42,12 +42,11 @@ int CommandPrompt::run() {
             listCommands();
         }else {
             std::string space = " ";
-            unsigned int num  = input.find(space);
+            auto num  = input.find(space);
             if(num == std::string::npos) {
                 //promptMap.find(command);
                 if(promptMap.find(input) != promptMap.end()) {
-                    std::string empty = " ";
-                     promptMap[input]->execute(empty);
+                    std::string empty = "";
                     if(promptMap[input]->execute(empty) != 0) {
                         std::cout << "Command failed. 1"  << std::endl;
                     }
@@ -59,13 +58,15 @@ int CommandPrompt::run() {
             }else {
                 std::istringstream iss(input);
                 std::string first, second;
-                iss>>first>>second;
+                iss>>first;
+                iss.ignore();
                 std::getline (iss, second);
                 if(first == "help") {
-                    // std::string second;
-                    // iss>>first>>second;
-                    if(promptMap.find(second) != promptMap.end()) {
-                        promptMap[second]->displayInfo();
+                    std::istringstream iss(second);
+                    std::string secondWord;
+                    iss >> secondWord;
+                    if(promptMap.find(secondWord) != promptMap.end()) {
+                        promptMap[secondWord]->displayInfo();
                     }else {
                         std::cout << "Command not found. 2" << std::endl;
                     }

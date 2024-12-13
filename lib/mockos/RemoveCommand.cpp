@@ -2,7 +2,7 @@
 #include <string>
 #include <set>
 
-RemoveCommand::RemoveCommand(AbstractFileSystem *s, AbstractFileFactory *f): system(s), factory(f){}
+RemoveCommand::RemoveCommand(AbstractFileSystem *s): system(s){}
 
 void RemoveCommand::displayInfo() {
     std::cout << "Remove command info: remove deleted a file, remove can be invoked with the command: rm <filename>" << std::endl;

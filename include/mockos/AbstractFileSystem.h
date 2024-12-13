@@ -3,7 +3,7 @@
 #ifndef ABSTRACTFILESYSTEM_H
 #define ABSTRACTFILESYSTEM_H
 #include <string>
-
+#include<set>
 
 class AbstractFileSystem {
 public:
@@ -13,7 +13,7 @@ public:
     virtual int deleteFile(const std::string& filename) = 0;
     virtual AbstractFile* openFile(const std::string& filename) = 0;
     virtual int closeFile(AbstractFile* file) = 0;
-    virtual std::set<string> getFileNames() = 0;
+    virtual std::set<std::string> getFileNames() = 0;
 };
 
 

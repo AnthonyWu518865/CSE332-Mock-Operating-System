@@ -4,6 +4,7 @@
 
 #include "mockos/MetadataDisplayVisitor.h"
 
+LSCommand::LSCommand(AbstractFileSystem *s): system(s){}
 void LSCommand::displayInfo() {
     std::cout << "ls lists out all the different file names, and if input ls -m, then it will display the metadata along with it" << std::endl;
 }
@@ -13,24 +14,25 @@ int LSCommand::execute(std::string s) {
     int count = 0;
     if (s == "") {
         for (std::set<string>::iterator it = curr.begin(); it != curr.end(); it++) {
-            count += 1;
             if (count == 2) {
                 count = 0;
                 cout << endl;
             }
-            std::cout << *it;
+            std::cout << *it<< "\t";
+            count += 1;
         }
+        cout << endl;
     }
     else if (s == "-m") {
         MetadataDisplayVisitor visitor;
         for(std::set<string>::iterator it = curr.begin(); it != curr.end(); it++) {
             AbstractFile* pointer = system->openFile(*it);
             pointer->accept(&visitor);
+            system->closeFile(pointer);
         }
     }
     else {
-        std::cout << "Command not found" << std::endl;
-        displayInfo();
+        return 23;
     }
-
+    return 0;
 }

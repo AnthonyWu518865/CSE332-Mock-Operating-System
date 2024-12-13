@@ -15,6 +15,7 @@ std::string PasswordProxy::passwordPrompt() {
     std::cout << "Password prompt: ";
     std::string input;
     std::cin >> input;
+    std::cin.ignore();
     return input;
 }
 

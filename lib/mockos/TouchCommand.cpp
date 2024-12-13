@@ -1,6 +1,7 @@
 #include "mockos/TouchCommand.h"
 #include <sstream>
 #include "mockos/PasswordProxy.h"
+#include <iostream>
 
 TouchCommand::TouchCommand(AbstractFileSystem *s, AbstractFileFactory *f): system(s), factory(f){}
 
@@ -10,7 +11,7 @@ void TouchCommand::displayInfo() {
 
 int TouchCommand::execute(std::string s) {
     std::string space = " ";
-    unsigned int num  = s.find(space);
+    auto num  = s.find(space);
     if(num != std::string::npos) {
         std::istringstream iss(s);
         std::string first, second;
@@ -20,19 +21,16 @@ int TouchCommand::execute(std::string s) {
             return 11;
         }
         std:: cout << "File created successfully" << std:: endl;
-        if (second == "-p") {
-            std::cout << "Enter password: " << std::endl;
-            std::string password;
-            std::cin >> password;
-            PasswordProxy curr(file, password);
-        }
-        int result = system->addFile(first, file);
+        std::cout << "Enter password: " << std::endl;
+        std::string password;
+        std::getline(std::cin, password);
+        AbstractFile* curr = new PasswordProxy(file, password);
+        int result = system->addFile(first, curr);
         if(result != 0) {
             delete file;
             return 13;
         }
         std:: cout << "File added successfully" << std::endl;
-        return 0;
     }
     else {
         AbstractFile *file = factory->createFile(s);
@@ -46,7 +44,7 @@ int TouchCommand::execute(std::string s) {
             return 13;
         }
         std:: cout << "File added successfully" << std::endl;
-        return 0;
     }
+    return 0;
 }
 
