@@ -10,12 +10,12 @@ void TouchCommand::displayInfo() {
 int TouchCommand::execute(std::string s) {
     AbstractFile *file = factory->createFile(s);
     if(file == nullptr) {
-        std::cerr << "File Creation failed. 1" << std::endl;
+        //std::cerr << "File Creation failed. 1" << std::endl;
         return 11;
     }
     int result = system->addFile(s, file);
     if(result != 0) {
-        std::cerr << "Adding File failed." << std::endl;
+        //std::cerr << "Adding File failed." << std::endl;
         delete file;
         return 13;
     }

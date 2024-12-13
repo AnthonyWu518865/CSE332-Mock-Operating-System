@@ -41,23 +41,23 @@ int CommandPrompt::run() {
             std::string space = " ";
             int num  = command.find(space);
             if(num == std::string::npos) {
-                promptMap.find(command);
+                //promptMap.find(command);
                 if(promptMap.find(command) != promptMap.end()) {
                     std::string empty = " ";
-                    return promptMap[command]->execute(empty);
-                    // if(promptMap[command]->execute(empty) != 0) {
-                    //     std::cout << "Command failed. 1"  << std::endl;
+                     promptMap[command]->execute(empty);
+                    if(promptMap[command]->execute(empty) != 0) {
+                        std::cout << "Command failed. 1"  << std::endl;
+                    }
                     //     return promptMap[command]->execute(empty);
                     // }
                 }else {
                     std::cout << "Command not found.1 " << std::endl;
-                    return 21;
                 }
             }else {
                 std::istringstream iss(command);
                 std::string first, second;
-                iss>>first>> second;
-                //std::getline (iss, rest);
+                iss>>first>>second;
+                std::getline (iss, second);
                 if(first == "help") {
                     // std::string second;
                     // iss>>first>>second;
@@ -65,19 +65,15 @@ int CommandPrompt::run() {
                         promptMap[second]->displayInfo();
                     }else {
                         std::cout << second << "Command not found. 2" << std::endl;
-                        return 22;
                     }
                 }else {
                     if(promptMap.find(first) != promptMap.end()) {
-                        std::cout << second << "Command found." << std::endl;
-                        if (promptMap[command]->execute(second) != 0) {
+                        std::cout << "Command found." << std::endl;
+                        if (promptMap[first]->execute(second) != 0) {
                             std::cout << "Command failed 2."  << std::endl;
-                            return 23;
                         }
-                        return 0;
                     }else {
                         std::cout << "Command not found. 3" << std::endl;
-                        return 24;
                     }
                 }
             }

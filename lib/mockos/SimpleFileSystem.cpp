@@ -40,8 +40,8 @@ int SimpleFileSystem::createFile(const std::string& filename) {
         cout << "File type" << filename << " is not compatible." << endl;
         return -3;
     }
-    auto result = files.insert({filename, newFile});
-    delete newFile;
+     files.insert({filename, newFile});
+     delete newFile;
     return 0;
 }
 
