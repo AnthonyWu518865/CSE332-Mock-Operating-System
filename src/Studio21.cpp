@@ -11,10 +11,5 @@ int main() {
     commandPrompt.setFileSystem(simpleSystem);
     commandPrompt.setFileFactory(simpleFactory);
     commandPrompt.addCommand("touch", command);
-    int result =  commandPrompt.run();
-    delete command;
-    delete simpleFactory;
-    delete simpleSystem;
-    return result;
-
+   return commandPrompt.run();
 }

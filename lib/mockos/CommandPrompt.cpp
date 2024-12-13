@@ -3,15 +3,18 @@
 #include <sstream>
 
 void CommandPrompt::setFileSystem(AbstractFileSystem * filePtr) {
-    AbstractFileSystem *fileSystem = filePtr;
+    fileSystem = filePtr;
 }
 
 void CommandPrompt::setFileFactory(AbstractFileFactory * fileFactoryPtr) {
-    AbstractFileFactory *fileFactory = fileFactoryPtr;
+    fileFactory = fileFactoryPtr;
 }
 
 int CommandPrompt::addCommand(std::string command, AbstractCommand *commandPtr) {
-    promptMap.insert({command, commandPtr});
+    auto check = promptMap.insert({command, commandPtr});
+    if(check.second == false) {
+        return 15;
+    }
     return 0;
 }
 
@@ -31,21 +34,21 @@ std::string CommandPrompt::prompt() {
 
 int CommandPrompt::run() {
     while (true) {
-        std::string command = prompt();
-        if (command == "q") {
+        std::string input = prompt();
+        if (input == "q") {
             std::cout << "quit." << std::endl;
             return 10;
-        }else if (command == "help") {
+        }else if (input == "help") {
             listCommands();
         }else {
             std::string space = " ";
-            int num  = command.find(space);
+            unsigned int num  = input.find(space);
             if(num == std::string::npos) {
                 //promptMap.find(command);
-                if(promptMap.find(command) != promptMap.end()) {
+                if(promptMap.find(input) != promptMap.end()) {
                     std::string empty = " ";
-                     promptMap[command]->execute(empty);
-                    if(promptMap[command]->execute(empty) != 0) {
+                     promptMap[input]->execute(empty);
+                    if(promptMap[input]->execute(empty) != 0) {
                         std::cout << "Command failed. 1"  << std::endl;
                     }
                     //     return promptMap[command]->execute(empty);
@@ -54,7 +57,7 @@ int CommandPrompt::run() {
                     std::cout << "Command not found.1 " << std::endl;
                 }
             }else {
-                std::istringstream iss(command);
+                std::istringstream iss(input);
                 std::string first, second;
                 iss>>first>>second;
                 std::getline (iss, second);
@@ -64,7 +67,7 @@ int CommandPrompt::run() {
                     if(promptMap.find(second) != promptMap.end()) {
                         promptMap[second]->displayInfo();
                     }else {
-                        std::cout << second << "Command not found. 2" << std::endl;
+                        std::cout << "Command not found. 2" << std::endl;
                     }
                 }else {
                     if(promptMap.find(first) != promptMap.end()) {

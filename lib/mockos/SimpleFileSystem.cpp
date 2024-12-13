@@ -9,7 +9,6 @@ SimpleFileSystem::~SimpleFileSystem() {
     }
 }
 
-
 int SimpleFileSystem::addFile(const std::string& filename, AbstractFile* file) {
     if (files.find(filename) != files.end() || file == nullptr) {
         cout << "File " << filename << " failed to add." << endl;
