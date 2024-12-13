@@ -8,39 +8,41 @@
 CatCommand::CatCommand(AbstractFileSystem *s): system(s){}
 
 void CatCommand::displayInfo() {
-    std::cout << "" << std::endl;
+    std::cout << "The Cat command is used to " << std::endl;
 }
 
 int CatCommand::execute(std::string s) {
     std::string space = " ";
-    unsigned int num  = s.find(space);
+    auto num  = s.find(space);
     if(num != std::string::npos) {
         std::istringstream iss(s);
         std::string first, second;
         iss>>first>>second;
         AbstractFile* file = system->openFile(first);
-        if(second == "-a") {
-            BasicDisplayVisitor displayVisitor;
-            file->accept(&displayVisitor);
-            std::cout << "Enter data you would like to append to the existing file. Enter :wq to save the file and exit, enter :q to exit without saving." << std::endl;
-            std::string input;
-            std::vector<char> currContent;
-            while (true) {
-                std::getline(std::cin, input);
-                if(input == ":wq") {
-                    file->append(currContent);
-                    std::cout << "Content appended" << std::endl;
-                    return 21;
+        BasicDisplayVisitor displayVisitor;
+        file->accept(&displayVisitor);
+        std::cout << "Enter data you would like to append to the existing file. Enter :wq to save the file and exit, enter :q to exit without saving." << std::endl;
+        std::string input;
+        std::vector<char> currContent;
+        while (true) {
+            std::getline(std::cin, input);
+            if(input == ":wq") {
+                currContent.pop_back();
+                if (file->append(currContent) != 0) {
+                    std::cout << "Content failed to append" << std:: endl;
+                    return 26;
                 }
-                else if (input == ":q") {
-                    return 22;
+                std::cout << "Content appended" << std::endl;
+                break;
+            }
+            else if (input == ":q") {
+                break;
+            }
+            else {
+                for (const char &c : input) {
+                    currContent.push_back(c);
                 }
-                else {
-                    for (const char &c : input) {
-                        currContent.push_back(c);
-                    }
-                    currContent.push_back('\n');
-                }
+                currContent.push_back('\n');
             }
         }
     }
@@ -52,7 +54,11 @@ int CatCommand::execute(std::string s) {
         while (true) {
             std::getline(std::cin, input);
             if(input == ":wq") {
-                file->write(currContent);
+                currContent.pop_back();
+                if(file->write(currContent) != 0) {
+                    std:: cout << "Content failed to overwrite" << std::endl;
+                    return 25;
+                }
                 std::cout << "Content overwritten" << std::endl;
                 break;
             }
