@@ -10,4 +10,7 @@ public:
     ~CopyCommand() override = default;
     void displayInfo() override;
     int execute(std::string) override;
+
+private:
+    AbstractFileSystem* fileSys;
 };

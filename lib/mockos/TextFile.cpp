@@ -3,6 +3,7 @@
 #include <vector>
 #include "mockos/TextFile.h"
 #include "mockos/AbstractFileVisitor.h"
+#include "mockos/TextFile.h"
 
 TextFile:: TextFile(const std::string &fileName) : name(fileName) {}
 
@@ -30,6 +31,16 @@ vector<char> TextFile::read() {
     return content;
 }
 
-void TextFile::accept(AbstractFileVisitor* abstract_file_visitor) {
-    abstract_file_visitor->visit_TextFile(this);
+AbstractFile* TextFile::clone(string strFile) {
+    //For file name
+    strFile = strFile.append(".txt");
+    AbstractFile* c_file = new TextFile(strFile);
+
+    vector<char> fileContent;
+
+    for (auto cont = this -> content.begin(); cont != this -> content.end(); ++cont) {
+        fileContent.push_back(*cont);
+    }
+    c_file -> write(fileContent);
+    return c_file;
 }

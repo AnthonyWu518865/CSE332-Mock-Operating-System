@@ -76,3 +76,25 @@ vector<char> ImageFile::read() {
 void ImageFile::accept(AbstractFileVisitor* abstract_file_visitor) {
     abstract_file_visitor->visit_ImageFile(this);
 }
+
+AbstractFile* ImageFile::clone(string imageName) {
+    string newName = imageName + ".img";
+    AbstractFile* c_file = new ImageFile(newName);
+    vector <char> fileContent = this -> contents;
+    cout << "Size of the content: " << fileContent.size() << endl;
+
+    int imgXY = static_cast<int>(sqrt(fileContent.size()));
+
+    fileContent.push_back('0' + imgXY);
+
+    int resultingDim = c_file -> write(fileContent);
+    if (resultingDim != 0) {
+        cout << "Write failed with an error code of: " << resultingDim  << endl;
+        delete c_file;
+        return nullptr;
+    }
+    else {
+        cout << "Write successful" << endl;
+        return c_file;
+    }
+}

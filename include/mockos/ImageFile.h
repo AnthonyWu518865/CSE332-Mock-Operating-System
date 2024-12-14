@@ -8,7 +8,7 @@
 class ImageFile : public AbstractFile{
 private:
     std:: string filename;
-    std::vector <char> contents ;
+    std::vector <char> contents;
     char size;
 
 public:
@@ -22,6 +22,8 @@ public:
     int append(std::vector<char> & extra) override;
     std::vector<char> read() override;
     void accept(AbstractFileVisitor* abstract_file_visitor) override;
+
+    AbstractFile* clone(std::string imageName) override;
 };
 
 #endif

@@ -18,6 +18,7 @@ class AbstractFile {
     virtual unsigned int getSize() const = 0;
     virtual std::string getName() const = 0;
     virtual void accept(AbstractFileVisitor* file) = 0;
+    virtual AbstractFile* clone(std::string copy) = 0;
 };
 
 #endif
