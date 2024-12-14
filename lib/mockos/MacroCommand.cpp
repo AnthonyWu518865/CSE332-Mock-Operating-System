@@ -6,9 +6,11 @@ MacroCommand::MacroCommand(AbstractFileSystem *s): system(s){}
 
 void MacroCommand::displayInfo() {
     std::cout << "Touch command info: touch creates a file, touch can be invoked with the command: touch <filename>" << std::endl;
+    //std:: cout <<
 }
 
 int MacroCommand::execute (std::string s) {
+    //vector <string> parsing = strategy ? strategy ->
     return 0;
 }
 std::vector<std::string> MacroCommand::addCommand(AbstractCommand* command) {
