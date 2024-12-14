@@ -1,5 +1,7 @@
 # Studio 19
-1. Jachin, Eunseo, Anthony
-2. The visitor method is used here, and essentially, the AbstractFile and the ImageFile have an accept method. Using the visitor class, the pointer to an object will call accept on the corresponding concrete file class, using the address of the visitor object and call the proper method corresponding with the file in the visitor class.
-3. It uses delegation by giving the role of displaying the file to the Visitor class that is created. If we didn't allocate this role to the Visitor class, then the ImageFile and TextFile would need to add those display method, so it allows us to encapsulate these functions into the visitor objects and reduce clutter in these image files.
-4. Consequences of the visitor arises when we have a large number of unique visitors and we add new concrete file classes. The reason why is because we have to modify all the visitors to account for the new concrete file class. This leads to a lot of maintanence, which is unideal. 
+1. Jachin, Eunseo, Anthony 
+2. By adding chars to a new vector, and directly adding it to a text file, we were able to validate the read function.
+   We appended and wrote to the file to confirm the expected output of the text AND image file.
+3. The visitor method is used here, and essentially, the AbstractFile and the ImageFile have an accept method. Using the visitor class, the pointer to an object will call accept on the corresponding concrete file class, using the address of the visitor object and call the proper method corresponding with the file in the visitor class.
+4. It uses delegation by giving the role of displaying the file to the Visitor class that is created. If we didn't allocate this role to the Visitor class, then the ImageFile and TextFile would need to add those display method, so it allows us to encapsulate these functions into the visitor objects and reduce clutter in these image files.
+5. Consequences of the visitor arises when we have a large number of unique visitors and we add new concrete file classes. The reason why is because we have to modify all the visitors to account for the new concrete file class. This leads to a lot of maintenance, which is not ideal and would require additional steps to define every visitor, which all have different functions.

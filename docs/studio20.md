@@ -9,14 +9,12 @@ Password prompt: eunseoanthony
 
 Process finished with exit code 0
 
-Testcase for read: We created a TextFile object and pushed back a vector of one char. We used read and output the size of it, where we were able to recieve the expected result
-
+Testcase for read: We created a TextFile object and pushed back a vector of one char. We used read and output the size of it, where we were able to receive the expected result
 Password prompt: eunseoanthony
 1
 Process finished with exit code 0
 
 Testcase for write: We wrote in a vector of chars of size 2 to see if it worked and read after and got the size
-
 /Users/jachinchoi/CLionProjects/oop-work-jachinanthonyeunseo16-21/cmake-build-debug/src/studio20
 Password prompt: eunseoanthony
 Password prompt: eunseoanthony
