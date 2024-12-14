@@ -19,6 +19,9 @@ int CatCommand::execute(std::string s) {
         std::string first, second;
         iss>>first>>second;
         AbstractFile* file = system->openFile(first);
+        if (file == nullptr) {
+            return 27;
+        }
         BasicDisplayVisitor displayVisitor;
         file->accept(&displayVisitor);
         std::cout << "Enter data you would like to append to the existing file. Enter :wq to save the file and exit, enter :q to exit without saving." << std::endl;
@@ -48,6 +51,9 @@ int CatCommand::execute(std::string s) {
     }
     else {
         AbstractFile* file = system->openFile(s);
+        if (file == nullptr) {
+            return 27;
+        }
         std::cout << "Enter data you would like to append to the existing file. Enter :wq to save the file and exit, enter :q to exit without saving." << std::endl;
         std::string input;
         std::vector<char> currContent;
