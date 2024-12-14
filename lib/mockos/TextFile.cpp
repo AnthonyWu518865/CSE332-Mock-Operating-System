@@ -31,6 +31,10 @@ vector<char> TextFile::read() {
     return content;
 }
 
+void TextFile::accept(AbstractFileVisitor* abstract_file_visitor) {
+    abstract_file_visitor->visit_TextFile(this);
+}
+
 AbstractFile* TextFile::clone(string strFile) {
     //For file name
     strFile = strFile.append(".txt");

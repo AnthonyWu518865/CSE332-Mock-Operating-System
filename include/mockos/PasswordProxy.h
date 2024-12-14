@@ -14,6 +14,7 @@ class PasswordProxy: public AbstractFile {
     unsigned int getSize() const override;
     std::string getName() const override;
     void accept(AbstractFileVisitor* file) override;
+    AbstractFile* clone(std::string copy)  override;
 
 protected:
     std::string passwordPrompt();

@@ -17,7 +17,7 @@ int main() {
     RemoveCommand *removeCommand = new RemoveCommand(simpleSystem);
     CatCommand *catCommand = new CatCommand(simpleSystem);
     DisplayCommand *displayCommand = new DisplayCommand(simpleSystem);
-    CatCommand *copyCommand = new CatCommand(simpleSystem);
+    CopyCommand *copyCommand = new CopyCommand(simpleSystem);
 
     CommandPrompt commandPrompt;
     commandPrompt.setFileSystem(simpleSystem);
@@ -27,7 +27,7 @@ int main() {
     commandPrompt.addCommand("rm", removeCommand);
     commandPrompt.addCommand("cat", catCommand);
     commandPrompt.addCommand("ds", displayCommand);
-    commandPrompt.addCommand("copy", copyCommand);
+    commandPrompt.addCommand("cp", copyCommand);
     commandPrompt.run();
 
     delete simpleSystem;

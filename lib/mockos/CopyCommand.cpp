@@ -18,7 +18,7 @@ int CopyCommand::execute (std::string s) {
     string existingFile, copiedFile;
     iss >> existingFile >> copiedFile;
 
-    AbstractFile* copyingFile = fileSys -> openFile(existingFile);
+    AbstractFile* copyingFile = system -> openFile(existingFile);
     if (!copyingFile) {
         cout << "Error: File not found." << endl;
         return 100;
@@ -27,8 +27,8 @@ int CopyCommand::execute (std::string s) {
     //For copying a file and adding it to the file system (fileSys)
     //Need to close the file after opening and adding to it too
     AbstractFile* copy = copyingFile -> clone(copiedFile);
-    int appFile = fileSys -> addFile(copy -> getName(), copy);
-    fileSys -> closeFile(copy);
+    int appFile = system -> addFile(copy -> getName(), copy);
+    system -> closeFile(copyingFile);
     copyingFile = nullptr;
 
     if (appFile == 0) {
