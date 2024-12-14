@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 #include <vector>
+
 class AbstractParsingStrategy {
-    virtual std:: vector<std::string> parse(std::string path) = 0;
+public:
+    virtual std:: vector<std::string> parse(std::string) = 0;
+    virtual ~AbstractParsingStrategy() {}
 };

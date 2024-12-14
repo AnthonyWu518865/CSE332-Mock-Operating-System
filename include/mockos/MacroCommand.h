@@ -7,7 +7,6 @@
 #include <string>
 
 class MacroCommand: public AbstractCommand {
-    AbstractFileSystem* system;
 public:
     MacroCommand(AbstractFileSystem* s);
     ~MacroCommand();
