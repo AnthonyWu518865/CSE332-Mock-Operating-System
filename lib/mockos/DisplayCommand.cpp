@@ -13,7 +13,7 @@ void DisplayCommand::displayInfo() {
 // how do we make sure that it succeeds
 int DisplayCommand::execute(std::string s) {
     std::string space = " ";
-    unsigned int num  = s.find(space);
+    auto num  = s.find(space);
     if(num != std::string::npos) {
         std::istringstream iss(s);
         std::string first, second;
