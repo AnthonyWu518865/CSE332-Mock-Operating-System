@@ -25,11 +25,13 @@ int DisplayCommand::execute(std::string s) {
                 cout << a << " ";
             }
         }
+        system->closeFile(file);
     }
     else {
         AbstractFile *file = system->openFile(s);
         BasicDisplayVisitor visitorDisplay;
         file->accept(&visitorDisplay);
+        system->closeFile(file);
     }
     return 0;
 }

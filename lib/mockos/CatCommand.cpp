@@ -33,12 +33,15 @@ int CatCommand::execute(std::string s) {
                 currContent.pop_back();
                 if (file->append(currContent) != 0) {
                     std::cout << "Content failed to append" << std:: endl;
+                    system->closeFile(file);
                     return 26;
                 }
                 std::cout << "Content appended" << std::endl;
+                system->closeFile(file);
                 break;
             }
             else if (input == ":q") {
+                system->closeFile(file);
                 break;
             }
             else {
@@ -63,12 +66,15 @@ int CatCommand::execute(std::string s) {
                 currContent.pop_back();
                 if(file->write(currContent) != 0) {
                     std:: cout << "Content failed to overwrite" << std::endl;
+                    system->closeFile(file);
                     return 25;
                 }
                 std::cout << "Content overwritten" << std::endl;
+                system->closeFile(file);
                 break;
             }
             else if (input == ":q") {
+                system->closeFile(file);
                 break;
             }
             else {
@@ -79,5 +85,6 @@ int CatCommand::execute(std::string s) {
             }
         }
     }
+
     return 0;
 }
