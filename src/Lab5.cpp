@@ -29,26 +29,20 @@ int main() {
     touchlsMacro -> addCommand(touchCommand);
     touchlsMacro -> addCommand(command);
 
-    MacroCommand* catdsMacro = new MacroCommand(simpleSystem);
-    catdsMacro -> addCommand(catCommand);
-    catdsMacro -> addCommand(displayCommand);
-
-    MacroCommand* touchcatdsMacro = new MacroCommand(simpleSystem);
-    touchcatdsMacro -> addCommand(touchCommand);
-    touchcatdsMacro -> addCommand(catCommand);
-    touchcatdsMacro -> addCommand(displayCommand);
+    MacroCommand* catdsMacroCommand = new MacroCommand(simpleSystem);
+    catdsMacroCommand -> addCommand(catCommand);
+    catdsMacroCommand -> addCommand(displayCommand);
 
     MacroCommand* renameCommand = new MacroCommand(simpleSystem);
     renameCommand -> setParseStrategy(rpStrategy);
     renameCommand -> addCommand(copyCommand);
-    renameCommand -> addCommand(removeCommand);
+    renameCommand -> addCommand(removeCommand); //deletion of file.txt
 
     commandPrompt.setFileSystem(simpleSystem);
     commandPrompt.setFileFactory(simpleFactory);
 
     commandPrompt.addCommand("touch", touchCommand);
-    commandPrompt.addCommand("catds", catdsMacro);
-    commandPrompt.addCommand("touchcatds", touchcatdsMacro);
+    commandPrompt.addCommand("catds", catdsMacroCommand);
     commandPrompt.addCommand("touchls", touchlsMacro);
     commandPrompt.addCommand("rn", renameCommand);
     commandPrompt.addCommand("ls", command);
@@ -69,8 +63,7 @@ int main() {
     delete copyCommand;
     delete rpStrategy;
     delete touchlsMacro;
-    delete catdsMacro;
-    delete touchcatdsMacro;
+    delete catdsMacroCommand;
     delete renameCommand;
     
     return 0;

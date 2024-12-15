@@ -13,6 +13,7 @@ MacroCommand::~MacroCommand() {
 
 void MacroCommand::displayInfo() {
     std::cout << "Touch command info (touchls): touch creates a file, touch can be invoked with the command: touch <filename>" << std::endl;
+    std::cout << "catds (catds<filename>): this command creates and edits a file and lists all of its contents" << std::endl;
 }
 
 int MacroCommand::execute (std::string s) {
