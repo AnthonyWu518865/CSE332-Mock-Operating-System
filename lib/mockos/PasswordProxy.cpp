@@ -60,5 +60,6 @@ void PasswordProxy:: accept(AbstractFileVisitor* file) {
 }
 
 AbstractFile* PasswordProxy:: clone(std::string copy) {
-    return new PasswordProxy(*this);
+    AbstractFile *cloneFile = filePointer -> clone(copy);
+    return new PasswordProxy(cloneFile, this->password);
 }
