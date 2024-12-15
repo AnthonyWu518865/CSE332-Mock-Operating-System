@@ -52,7 +52,7 @@ void MacroCommand::addCommand(AbstractCommand* command) {
 }
 void MacroCommand::setParseStrategy(AbstractParsingStrategy* strategy) {
     //if (pStrategy) {
-        delete pStrategy;
+        //delete pStrategy;
    // }
-    //pStrategy = strategy;
+    pStrategy = strategy;
 }

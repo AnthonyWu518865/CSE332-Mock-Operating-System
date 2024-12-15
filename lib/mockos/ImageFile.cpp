@@ -50,7 +50,7 @@ int ImageFile::write(const vector<char>& data) {
 
     for(int height = 0; height < size; height++) {
         for(int width = 0; width < size; width++) {
-            int currIndex = width * size + height;
+            int currIndex = height * size + width;
             contents.push_back(data[currIndex]);
         }
     }

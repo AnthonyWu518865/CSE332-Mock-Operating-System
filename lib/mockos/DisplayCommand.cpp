@@ -32,6 +32,9 @@ int DisplayCommand::execute(std::string input) {
     if (foruf == "-d") {
         vector <char> buffer = file -> read();
         for (char x : buffer) {
+            // if(x != '\n') {
+            //
+            // }
             std:: cout << x;
         }
         std::cout << std::endl;
