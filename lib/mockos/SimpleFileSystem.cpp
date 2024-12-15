@@ -47,6 +47,7 @@ int SimpleFileSystem::createFile(const std::string& filename) {
 AbstractFile* SimpleFileSystem::openFile(const std::string& filename) {
     auto it = files.find(filename);
     if (it == files.end()) {
+        cout << "File cannot be found." << endl;
         return nullptr;
     }
     if (openFiles.find(it->second) != openFiles.end()) {
