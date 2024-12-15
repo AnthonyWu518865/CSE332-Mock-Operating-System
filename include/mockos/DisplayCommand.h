@@ -8,7 +8,6 @@ class DisplayCommand: public AbstractCommand {
 
 public:
     DisplayCommand(AbstractFileSystem* s);
-    ~DisplayCommand() override = default;
     void displayInfo() override;
     int execute(std::string) override;
 

@@ -24,7 +24,7 @@ int DisplayCommand::execute(std::string input) {
 
     AbstractFile *file = system -> openFile(filename);
 
-    if (file == NULL) {
+    if (file == nullptr) {
         std::cout << "Error: Unable to find file." << std::endl;
         return 85;
     }
