@@ -12,11 +12,11 @@ public:
     ~MacroCommand();
     void displayInfo() override;
     int execute(std::string) override;
-    std::vector<std::string>addCommand(AbstractCommand* command);
+    void addCommand(AbstractCommand* command);
     void setParseStrategy(AbstractParsingStrategy* strategy);
 
 private:
     vector <AbstractCommand*> commands;
-    AbstractParsingStrategy* strategy;
+    AbstractParsingStrategy* pStrategy;
     AbstractFileSystem* fileSys;
 };
