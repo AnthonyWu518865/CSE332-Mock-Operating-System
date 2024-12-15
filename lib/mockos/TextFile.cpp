@@ -24,10 +24,6 @@ int TextFile :: append(vector<char> & extra) {
     return 0;
 }
 vector<char> TextFile::read() {
-    // for (const char& c : content) {
-    //     std::cout << c;
-    // }
-    // std::cout << std::endl;
     return content;
 }
 
