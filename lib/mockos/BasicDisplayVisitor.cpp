@@ -12,7 +12,7 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile* image_file) {
     for(int height = 0; height < currSize; height++) {
         for(int width = 0; width < currSize; width++) {
             int currIndex = height * currSize + width;
-            cout << image_file->read()[currIndex] << " ";
+            cout << image_file->read()[currIndex];
         }
         cout << endl;
     }

@@ -32,7 +32,7 @@ int MacroCommand::execute (std::string s) {
         if (i < parsedInput.size()) {
             int parsedResult = command -> execute(parsedInput[i]);
             if (parsedResult != 0) {
-                cerr << "Error: Command execution failed with input: " << parsedInput[i] << " and error code: " << parsedResult << endl;
+                return 86;
             }
             if (i + 1 < parsedInput.size()) {
                 ++i;

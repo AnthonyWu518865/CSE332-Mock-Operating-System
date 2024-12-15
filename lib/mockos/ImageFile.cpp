@@ -3,7 +3,7 @@
 #include <vector>
 #include "mockos/ImageFile.h"
 #include "mockos/AbstractFileVisitor.h"
-
+#include <cmath>
 using namespace std;
 
 ImageFile::ImageFile(const std::string& fileName)
@@ -23,6 +23,7 @@ string ImageFile::getName() const {
 }
 
 int ImageFile::write(const vector<char>& data) {
+
     if (data.empty()) {
         size = 0;
         contents.clear();
@@ -63,7 +64,6 @@ int ImageFile :: append(vector<char> & extra) {
 
 
 vector<char> ImageFile::read() {
-
     // for(int height = 0; height < size; height++) {
     //     for(int width = 0; width < size; width++) {
     //         int currIndex = width * size + height;
@@ -83,7 +83,7 @@ AbstractFile* ImageFile::clone(string imageName) {
     vector <char> fileContent = this -> contents;
     cout << "Size of the content: " << fileContent.size() << endl;
 
-    int imgXY = static_cast<int>(sqrt(fileContent.size()));
+    int imgXY = (sqrt(fileContent.size()));
 
     fileContent.push_back('0' + imgXY);
 

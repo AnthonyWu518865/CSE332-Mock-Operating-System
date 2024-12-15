@@ -1,7 +1,7 @@
 # Lab 5
 Lab 5: Eun Seo Lee, Anthony Wu, Jachin Choi
 
-Anthony and Jachin began working on the lab (steps 1-3). Anthony also worked on step 4. I worked on steps 6-8.
+Anthony and Jachin began working on the lab (steps 1-5). Eunseo worked on steps 6-8.
 There were several issues we ran into while doing the work, so each time we would discuss it in our group chat and commit and push our work, giving everyone a chance to look at the code and attempt to fix the issues.
 By the end of the lab, we had all worked on each of the implementations in our own way, all while communicating with each other the errors we were encountering.
 

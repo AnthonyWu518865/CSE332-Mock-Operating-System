@@ -14,7 +14,6 @@ int DisplayCommand::execute(std::string input) {
     std::istringstream iss(input);
     std::string filename, foruf;
     iss >> filename;
-
     std::string space = " ";
 
     if((iss >> foruf) && foruf != "-d") {
@@ -30,11 +29,8 @@ int DisplayCommand::execute(std::string input) {
     }
 
     if (foruf == "-d") {
-        vector <char> buffer = file -> read();
+        vector <char> buffer = file->read();
         for (char x : buffer) {
-            // if(x != '\n') {
-            //
-            // }
             std:: cout << x;
         }
         std::cout << std::endl;
