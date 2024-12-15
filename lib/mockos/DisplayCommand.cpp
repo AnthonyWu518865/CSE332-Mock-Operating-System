@@ -1,38 +1,44 @@
 #include "mockos/DisplayCommand.h"
 #include <sstream>
-
 #include "mockos/BasicDisplayVisitor.h"
 #include "mockos/PasswordProxy.h"
 
 DisplayCommand::DisplayCommand(AbstractFileSystem *s): system(s){}
 
 void DisplayCommand::displayInfo() {
-    std::cout << "" << std::endl;
+    std::cout << "ds (ds<filename>): displays a formatted file." << std::endl;
+    std::cout << "ds (ds<filename> -d): displays an unformatted file." << std::endl;
 }
 
-// how do we make sure that it succeeds
-int DisplayCommand::execute(std::string s) {
+int DisplayCommand::execute(std::string input) {
+    std::istringstream iss(input);
+    std::string filename, foruf;
+    iss >> filename;
+
     std::string space = " ";
-    auto num  = s.find(space);
-    if(num != std::string::npos) {
-        std::istringstream iss(s);
-        std::string first, second;
-        iss>>first>>second;
-        AbstractFile *file = system->openFile(first);
-        if (second == "-d") {
-            vector<char> unformatted = file->read();
-            for (const char a : unformatted) {
-                cout << a << " ";
-            }
+
+    if((iss >> foruf) && foruf != "-d") {
+        std::cout << "Error: Must indicate unformatted files/data with '-d'." << std::endl;
+        return 84;
+    }
+
+    AbstractFile *file = system -> openFile(filename);
+
+    if (file == NULL) {
+        std::cout << "Error: Unable to find file." << std::endl;
+        return 85;
+    }
+
+    if (foruf == "-d") {
+        vector <char> buffer = file -> read();
+        for (char x : buffer) {
+            std:: cout << x;
         }
-        system->closeFile(file);
+        std::cout << std::endl;
     }
     else {
-        AbstractFile *file = system->openFile(s);
-        BasicDisplayVisitor visitorDisplay;
-        file->accept(&visitorDisplay);
-        system->closeFile(file);
+        file -> accept(&visitorDisplay);
     }
+    system -> closeFile(file);
     return 0;
 }
-
