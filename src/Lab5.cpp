@@ -7,6 +7,8 @@
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
 #include "mockos/CopyCommand.h"
+#include "mockos/MacroCommand.h"
+#include "mockos/RenameParsingStrategy.h"
 
 int main() {
     SimpleFileSystem *simpleSystem = new SimpleFileSystem();
@@ -20,16 +22,43 @@ int main() {
     CopyCommand *copyCommand = new CopyCommand(simpleSystem);
 
     CommandPrompt commandPrompt;
+
+    RenameParsingStrategy* rpStrategy = new RenameParsingStrategy();
+
+    MacroCommand* touchlsMacro = new MacroCommand(simpleSystem);
+    touchlsMacro -> addCommand(touchCommand);
+    touchlsMacro -> addCommand(command);
+
+    MacroCommand* catdsMacro = new MacroCommand(simpleSystem);
+    catdsMacro -> addCommand(catCommand);
+    catdsMacro -> addCommand(displayCommand);
+
+    MacroCommand* touchcatdsMacro = new MacroCommand(simpleSystem);
+    touchcatdsMacro -> addCommand(touchCommand);
+    touchcatdsMacro -> addCommand(catCommand);
+    touchcatdsMacro -> addCommand(displayCommand);
+
+    MacroCommand* renameCommand = new MacroCommand(simpleSystem);
+    renameCommand -> setParseStrategy(rpStrategy);
+    renameCommand -> addCommand(copyCommand);
+    renameCommand -> addCommand(removeCommand);
+
     commandPrompt.setFileSystem(simpleSystem);
     commandPrompt.setFileFactory(simpleFactory);
+
     commandPrompt.addCommand("touch", touchCommand);
+    commandPrompt.addCommand("catds", catdsMacro);
+    commandPrompt.addCommand("touchcatds", touchcatdsMacro);
+    commandPrompt.addCommand("touchls", touchlsMacro);
+    commandPrompt.addCommand("rn", renameCommand);
     commandPrompt.addCommand("ls", command);
     commandPrompt.addCommand("rm", removeCommand);
     commandPrompt.addCommand("cat", catCommand);
     commandPrompt.addCommand("ds", displayCommand);
     commandPrompt.addCommand("cp", copyCommand);
-    commandPrompt.run();
 
+    commandPrompt.run();
+    
     delete simpleSystem;
     delete simpleFactory;
     delete command;
@@ -38,5 +67,11 @@ int main() {
     delete catCommand;
     delete displayCommand;
     delete copyCommand;
+    delete rpStrategy;
+    delete touchlsMacro;
+    delete catdsMacro;
+    delete touchcatdsMacro;
+    delete renameCommand;
+    
     return 0;
 }
