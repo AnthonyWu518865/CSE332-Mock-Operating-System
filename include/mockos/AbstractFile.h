@@ -2,7 +2,6 @@
 
 #ifndef ABSTRACT_FILE_H
 #define ABSTRACT_FILE_H
-//#include "mockos/AbstractFileVisitor.h"
 
 class AbstractFileVisitor;
 
