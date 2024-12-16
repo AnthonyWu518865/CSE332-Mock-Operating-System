@@ -6,7 +6,7 @@
 TouchCommand::TouchCommand(AbstractFileSystem *s, AbstractFileFactory *f): system(s), factory(f){}
 
 void TouchCommand::displayInfo() {
-    std::cout << "Touch command info: touch creates a file, touch can be invoked with the command: touch <filename>" << std::endl;
+    std::cout << "Touch command info: touch creates a file, touch can be invoked with the command: touch <filename>. Touch -p info: touch -p creates a password protected file. touch <filename> -p." << std::endl;
 }
 
 int TouchCommand::execute(std::string s) {

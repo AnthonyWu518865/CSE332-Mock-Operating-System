@@ -2,6 +2,12 @@
 #include <string>
 #include <set>
 
+
+RemoveCommand::RemoveCommand(AbstractFileSystem *s): system(s){}
+void RemoveCommand::displayInfo() {
+    std::cout << "rm deletes file, it can be invoked with the command: rm <filename>. " << std::endl;
+}
+
 int RemoveCommand::execute(std::string fn) {
     if (fn.empty()) {
         cout<< "Error: Empty file name." << endl;

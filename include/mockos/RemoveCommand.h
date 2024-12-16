@@ -6,10 +6,8 @@
 class RemoveCommand: public AbstractCommand {
     AbstractFileSystem* system;
 public:
-    RemoveCommand(AbstractFileSystem* s) : system(s) {}
+    RemoveCommand(AbstractFileSystem* s);
     virtual ~RemoveCommand(){}
-    virtual void displayInfo() override {
-        cout << "rm<filename>: remove command, removes a file from the file system" << endl;
-    }
+    virtual void displayInfo() override;
     virtual int execute(std::string)override;
 };

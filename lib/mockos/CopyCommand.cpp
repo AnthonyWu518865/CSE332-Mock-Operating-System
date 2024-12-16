@@ -9,7 +9,7 @@
 CopyCommand::CopyCommand(AbstractFileSystem *s): system(s){}
 
 void CopyCommand::displayInfo() {
-    std::cout << "Touch command info: touch creates a file, touch can be invoked with the command: touch <filename>" << std::endl;
+    std::cout << "Copy command info: copy copies a file into a new file, copy can be invoked with the command: cp <filename> <newFilename_without_extension>." << std::endl;
 }
 
 int CopyCommand::execute (std::string s) {

@@ -8,7 +8,7 @@
 CatCommand::CatCommand(AbstractFileSystem *s): system(s){}
 
 void CatCommand::displayInfo() {
-    std::cout << "The Cat command is used to " << std::endl;
+    std::cout << "The Cat command is used to write to a file. Cat command can be invoked by cat <filename> for overwrite or cat <filename> -a for append." << std::endl;
 }
 
 int CatCommand::execute(std::string s) {
