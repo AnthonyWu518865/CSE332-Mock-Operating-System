@@ -6,13 +6,32 @@
 #include "mockos/MetadataDisplayVisitor.h"
 #include <sstream>
 
-
 vector<string> MacroParsingStrategy::parse(string input) {
-    vector<string> tokens;
-    stringstream ss(input);
-    string s;
-    while(getline(ss, s, '|')) {
-        tokens.push_back(s);
+    vector<std::string> output;
+    stringstream iss(input);
+    std::string s;
+    std::string secondOption;
+    iss >> s;
+    iss >> secondOption;
+    if (secondOption == "-p") {
+        output.push_back(s + " " + secondOption);
+        std::string thirdOption;
+        iss >> thirdOption;
+        if (thirdOption == "-m") {
+            output.push_back(thirdOption);
+        }
+        else {
+            output.push_back("");
+        }
     }
-    return tokens;
+    else {
+        output.push_back(s);
+        if (secondOption == "-m") {
+            output.push_back(secondOption);
+        }
+        else {
+            output.push_back("");
+        }
+    }
+    return output;
 }

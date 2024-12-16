@@ -25,23 +25,16 @@ int MacroCommand::execute (std::string s) {
 
     if (commands.empty() == true) {
         cerr << "Error: There are no commands added." << endl;
+        return 89;
     }
 
     int i = 0;
     for (AbstractCommand* command : commands) {
-        if (i < parsedInput.size()) {
-            int parsedResult = command -> execute(parsedInput[i]);
-            if (parsedResult != 0) {
-                return 86;
-            }
-            if (i + 1 < parsedInput.size()) {
-                ++i;
-            }
+        int result = command->execute(parsedInput[i]);
+        if (result != 0) {
+            return 87;
         }
-        else {
-            cerr << "Error: not enough inputs." << endl;
-            return -1;
-        }
+        i++;
     }
     cout << "Successful parsing." << endl;
     return 0;

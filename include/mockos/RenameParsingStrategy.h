@@ -3,5 +3,6 @@
 
 class RenameParsingStrategy : public AbstractParsingStrategy {
 public:
-    std::vector<std::string> parse(std::string);
+
+    std::vector<std::string> parse(std::string) override;
 };

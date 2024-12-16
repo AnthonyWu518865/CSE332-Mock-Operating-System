@@ -33,10 +33,6 @@ int main() {
     touchlsMacro -> addCommand(touchCommand);
     touchlsMacro -> addCommand(command);
 
-    MacroCommand* catdsMacroCommand = new MacroCommand(simpleSystem);
-    catdsMacroCommand -> addCommand(catCommand);
-    catdsMacroCommand -> addCommand(displayCommand);
-
     MacroCommand* renameCommand = new MacroCommand(simpleSystem);
     renameCommand -> setParseStrategy(rpStrategy);
     renameCommand -> addCommand(copyCommand);
@@ -46,7 +42,6 @@ int main() {
     commandPrompt.setFileFactory(simpleFactory);
 
     commandPrompt.addCommand("touch", touchCommand);
-    commandPrompt.addCommand("catds", catdsMacroCommand);
     commandPrompt.addCommand("touchls", touchlsMacro);
     commandPrompt.addCommand("rn", renameCommand);
     commandPrompt.addCommand("ls", command);
@@ -67,8 +62,7 @@ int main() {
     delete copyCommand;
     delete rpStrategy;
     delete touchlsMacro;
-    delete catdsMacroCommand;
     delete renameCommand;
-    
+    delete strategy;
     return 0;
 }
