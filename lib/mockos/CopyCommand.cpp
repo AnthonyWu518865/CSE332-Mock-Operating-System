@@ -23,7 +23,6 @@ int CopyCommand::execute (std::string s) {
         cout << "Error: File not found." << endl;
         return 100;
     }
-
     //For copying a file and adding it to the file system (fileSys)
     //Need to close the file after opening and adding to it too
     AbstractFile* copy = copyingFile -> clone(copiedFile);

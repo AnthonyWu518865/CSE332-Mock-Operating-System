@@ -3,11 +3,12 @@
 #include "mockos/BasicDisplayVisitor.h"
 #include "mockos/PasswordProxy.h"
 
+//Constructor
 DisplayCommand::DisplayCommand(AbstractFileSystem *s): system(s){}
 
-void DisplayCommand::displayInfo() {
-    std::cout << "ds (ds<filename>): displays a formatted file." << std::endl;
-    std::cout << "ds (ds<filename> -d): displays an unformatted file." << std::endl;
+void DisplayCommand::displayInfo() { //Indicates what "-d" means after the filename
+    std::cout << "ds (ds<filename>): displays a formatted file." << std::endl; //Formatted file (no "-d")
+    std::cout << "ds (ds<filename> -d): displays an unformatted file." << std::endl; //Unformatted file
 }
 
 int DisplayCommand::execute(std::string input) {
@@ -16,6 +17,7 @@ int DisplayCommand::execute(std::string input) {
     iss >> filename;
     std::string space = " ";
 
+    //Similar to other functions - checks to see if "-d" exists -> if formatting is wrong, a unique error code of 84 is shown
     if((iss >> foruf) && foruf != "-d") {
         std::cout << "Error: Must indicate unformatted files/data with '-d'." << std::endl;
         return 84;
@@ -25,10 +27,10 @@ int DisplayCommand::execute(std::string input) {
 
     if (file == nullptr) {
         std::cout << "Error: Unable to find file." << std::endl;
-        return 85;
+        return 85; //Unique error code of 85 if the file doesn't exist (can't open the file)
     }
 
-    if (foruf == "-d") {
+    if (foruf == "-d") { //For unformatted files -> reads file and iterates through characters
         vector <char> buffer = file->read();
         for (char x : buffer) {
             std:: cout << x;

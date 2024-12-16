@@ -12,7 +12,7 @@ private:
     std::string name;
 
 public:
-    TextFile(const string &fileName);
+    TextFile(const string &name);
     string getName() const override;
     unsigned int getSize() const override;
     int write(const vector<char> & newContent) override;

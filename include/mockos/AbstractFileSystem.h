@@ -1,7 +1,6 @@
 # pragma once
 #include "AbstractFile.h"
-#ifndef ABSTRACTFILESYSTEM_H
-#define ABSTRACTFILESYSTEM_H
+
 #include <string>
 #include<set>
 
@@ -15,6 +14,3 @@ public:
     virtual int closeFile(AbstractFile* file) = 0;
     virtual std::set<std::string> getFileNames() = 0;
 };
-
-
-#endif

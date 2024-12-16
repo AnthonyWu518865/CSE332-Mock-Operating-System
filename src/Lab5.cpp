@@ -21,6 +21,7 @@ int main() {
     CatCommand *catCommand = new CatCommand(simpleSystem);
     DisplayCommand *displayCommand = new DisplayCommand(simpleSystem);
     CopyCommand *copyCommand = new CopyCommand(simpleSystem);
+
     MacroParsingStrategy* strategy = new MacroParsingStrategy();
 
 
@@ -64,5 +65,6 @@ int main() {
     delete touchlsMacro;
     delete renameCommand;
     delete strategy;
+
     return 0;
 }

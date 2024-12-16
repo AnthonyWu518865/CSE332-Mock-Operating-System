@@ -18,9 +18,7 @@ int TextFile::write(const vector<char> & newContent) {
     return 0;
 }
 int TextFile :: append(vector<char> & extra) {
-    for (int i = 0; i < extra.size(); i++) {
-        content.push_back(extra[i]);
-    }
+    content.insert(content.end(), extra.begin(), extra.end());
     return 0;
 }
 vector<char> TextFile::read() {
