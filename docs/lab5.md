@@ -16,7 +16,8 @@ Errors:
 Throughout the lab, we ran into a lot of errors. To name a few, we had issues with some formatting with the metadata display visitor, as the test cases expected it in a certain format, and we did not have that. Also, a big 
 issue that we faced was figuring out the macrocommand parsing for the one we were adding which was touchls. We were having errors with parsing the correct thing into the vector<std::string> for it to run properly. We fixed this by 
 running through the debugger and seeing what was wrong, which allowed us to change our code accordingly. Another issue we making the password proxy files work with the touch command. At first, we weren't sure how to parse the input, 
-but after some thought, we were able to think about how to parse it properly for it to work. 
+but after some thought, we were able to think about how to parse it properly for it to work. We also had errors, as we frogot to close files after using them. We were ablet to fix this by 
+ensuring that we closed after openign them to open it up for further use. 
 
 Test cases:
 
@@ -31,7 +32,8 @@ using the touch command, and then used the remove command after. We then used ls
 
 Touch Command: For the touch command, we were expected to use touch or touch -p. We tested this by making new files and password protected files. We were
 expecting these files to be created and added to the file system. For the password Protected ones, it asked us for a password, which was expected. 
-We also checked right after using the ls command. 
+We also checked right after using the ls command. We also used the cat and ds command after to check if it requires the password for the password proxy files, 
+and it does ask for password before writing or display which shows that the -p created the Password Proxy correctly. 
 
 Cat Command: The cat command's role was to append or overwrite things to a file based on if there was a "" or -a after cat.
 We expected :wq with -a to have appeneded to it, while :wq without the a to overwrite. We tested this by using the 

@@ -26,7 +26,13 @@ int CopyCommand::execute (std::string s) {
     //For copying a file and adding it to the file system (fileSys)
     //Need to close the file after opening and adding to it too
     AbstractFile* copy = copyingFile -> clone(copiedFile);
+    if (copy == nullptr) {
+        std::cout << "Error cloning file" << std::endl;
+    }
     int appFile = system -> addFile(copy -> getName(), copy);
+    if (appFile != 0 ) {
+        std::cout << "Error adding file" << std::endl;
+    }
     system -> closeFile(copyingFile);
     copyingFile = nullptr;
 

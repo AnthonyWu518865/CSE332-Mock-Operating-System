@@ -15,8 +15,8 @@ int RemoveCommand::execute(std::string fn) {
     }
 
     int deleteResult = system -> deleteFile(fn); //Allows for safe deletion of files
-    if (deleteResult == 0) {
-        return 0;
+    if (deleteResult != 0) {
+        return 54;
     }
-    return deleteResult;
+    return 0;
 }
