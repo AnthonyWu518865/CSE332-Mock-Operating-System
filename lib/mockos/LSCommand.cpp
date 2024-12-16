@@ -23,6 +23,7 @@ int LSCommand::execute(std::string s) {
         }
         cout << endl;
     }
+    //Display of a single file per line (-m) -> opens, accepts, and closes file.
     else if (s == "-m") {
         MetadataDisplayVisitor visitor;
         for(std::set<string>::iterator it = curr.begin(); it != curr.end(); it++) {

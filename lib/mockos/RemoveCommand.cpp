@@ -5,10 +5,10 @@
 int RemoveCommand::execute(std::string fn) {
     if (fn.empty()) {
         cout<< "Error: Empty file name." << endl;
-        return 5;
+        return 5; //Unique error code
     }
 
-    int deleteResult = system -> deleteFile(fn);
+    int deleteResult = system -> deleteFile(fn); //Allows for safe deletion of files
     if (deleteResult == 0) {
         return 0;
     }

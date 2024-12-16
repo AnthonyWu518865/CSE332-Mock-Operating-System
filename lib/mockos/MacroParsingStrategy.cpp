@@ -13,11 +13,11 @@ vector<string> MacroParsingStrategy::parse(string input) {
     std::string secondOption;
     iss >> s;
     iss >> secondOption;
-    if (secondOption == "-p") {
+    if (secondOption == "-p") { //Checks for password protection
         output.push_back(s + " " + secondOption);
         std::string thirdOption;
         iss >> thirdOption;
-        if (thirdOption == "-m") {
+        if (thirdOption == "-m") { //Checks for meta display option
             output.push_back(thirdOption);
         }
         else {

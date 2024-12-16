@@ -4,22 +4,29 @@
 
 
 int main() {
-    std::vector<char> validData = {'X', ' ', 'X', ' ', '2'};
-    ImageFile imageFile("test.img");
-    std::cout<<imageFile.getName() << endl;
-    imageFile.write(validData);
-    imageFile.read();
-    std::cout<<imageFile.getSize()<< endl;
+    // std::vector<char> validData = {'X', ' ', 'X', ' ', '2'};
+    // ImageFile imageFile("test.img");
+    // std::cout<<imageFile.getName() << endl;
+    // imageFile.write(validData);
+    // imageFile.read();
+    // std::cout<<imageFile.getSize()<< endl;
 
     SimpleFileSystem fs;
 
-    AbstractFile* file1 = new TextFile("file1.txt");
+    TextFile* file1 = new TextFile("file1.txt");
+    ImageFile* image1 = new ImageFile("image1.img");
+
     fs.addFile("file1.txt", file1);
+    fs.addFile("image1.txt", image1);
+
+    fs.createFile("file1.txt");
+    fs.createFile("image1.txt");
 
     int deleteResult = fs.deleteFile("file1.txt");
     if (deleteResult == 0) {
         std::cout << "File deleted successfully!" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "Failed to delete file. Error code: " << deleteResult << std::endl;
     }
 
