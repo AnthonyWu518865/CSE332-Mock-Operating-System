@@ -4,7 +4,6 @@
 #include <sstream>
 #include "mockos/BasicDisplayVisitor.h"
 
-
 CatCommand::CatCommand(AbstractFileSystem *s): system(s){}
 
 void CatCommand::displayInfo() {
