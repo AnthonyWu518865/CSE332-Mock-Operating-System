@@ -16,6 +16,10 @@ int TouchCommand::execute(std::string s) {
         std::istringstream iss(s);
         std::string first, second;
         iss>>first>>second;
+        if(second != "-p") {
+            cout<< "invalid command."<<endl;
+            return 90;
+        }
         AbstractFile *file = factory->createFile(first);
         if(file == nullptr) {
             return 11;

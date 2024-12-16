@@ -8,6 +8,7 @@
 #include "mockos/DisplayCommand.h"
 #include "mockos/CopyCommand.h"
 #include "mockos/MacroCommand.h"
+#include "mockos/MacroParsingStrategy.h"
 #include "mockos/RenameParsingStrategy.h"
 
 int main() {
@@ -20,12 +21,15 @@ int main() {
     CatCommand *catCommand = new CatCommand(simpleSystem);
     DisplayCommand *displayCommand = new DisplayCommand(simpleSystem);
     CopyCommand *copyCommand = new CopyCommand(simpleSystem);
+    MacroParsingStrategy* strategy = new MacroParsingStrategy();
+
 
     CommandPrompt commandPrompt;
 
     RenameParsingStrategy* rpStrategy = new RenameParsingStrategy();
 
     MacroCommand* touchlsMacro = new MacroCommand(simpleSystem);
+    touchlsMacro -> setParseStrategy(strategy);
     touchlsMacro -> addCommand(touchCommand);
     touchlsMacro -> addCommand(command);
 
