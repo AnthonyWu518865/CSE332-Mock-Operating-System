@@ -2,7 +2,6 @@
 #include "mockos/TextFile.h"
 #include "mockos/ImageFile.h"
 
-
 int main() {
     // std::vector<char> validData = {'X', ' ', 'X', ' ', '2'};
     // ImageFile imageFile("test.img");

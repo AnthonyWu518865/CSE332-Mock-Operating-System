@@ -8,7 +8,6 @@
 using namespace std;
 
 int main () {
-
     AbstractFile* input = new TextFile("example.txt");
     //TextFile input("input.txt");
     vector<char> newText;
